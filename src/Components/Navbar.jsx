@@ -59,7 +59,6 @@ export const Navbar = () => {
   const onClick = (e) => {
     console.log('click ', e);
     console.log(current);
-    setCurrent(e.key);
   };
   return <Menu onClick={onClick} theme="dark" selectedKeys={[current]} mode="horizontal" items={items} />;
 };

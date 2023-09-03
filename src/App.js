@@ -10,6 +10,8 @@ import { Projects } from './Pages/Projects';
 import { Publications } from './Pages/Publication';
 
 function App () {
+  let currrent= "home";
+
   return (
 	<>
 		<Routes>
