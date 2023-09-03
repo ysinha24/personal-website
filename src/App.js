@@ -1,7 +1,6 @@
 import React, { Component }  from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import {useRoutes, BrowserRouter} from 'react-router-dom';
 import './App.css';
 import { LandingPage } from './Pages/Landing';
 
@@ -14,11 +13,11 @@ function App () {
   return (
 	<>
 		<Routes>
-        <Route path="/" element={<LandingPage/>} />
-        <Route path="projects" element={<Projects/>} />
-        <Route path="publications" element={<Publications/>} />
-        <Route path="calendar" element={<CalendarPage/>} />
-      </Routes>
+      <Route path="/" element={<LandingPage/>} />
+      <Route path="projects" element={<Projects/>} />
+      <Route path="publications" element={<Publications/>} />
+      <Route path="calendar" element={<CalendarPage/>} />
+    </Routes>
 	</>
   );
 }	
