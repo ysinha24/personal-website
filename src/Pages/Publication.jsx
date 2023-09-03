@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Card, Layout, Divider, Image } from 'antd';
+import { Space, Card, Layout, Divider, Image, Row } from 'antd';
 import { Navbar } from '../Components/Navbar';
 import "../Styles/Projects.css";
 import paper from "../Resources/Paper.png";
@@ -22,8 +22,10 @@ export const Publications = () => {
                 >
                         <Card 
                         title="MODSIM 2022 Paper - Real-Time Situation Awareness Assessment for Pilots" 
-                        cover={<Image src={paper} width={400} className="img1" alt="img1"/>}>
+                        >
                         
+                        <Row justify="center"><Image src={paper} width={400} className="img1" alt="img1"/></Row>
+
                         <p><b>Abstract</b><br/>
 
                         Assessing Situation Awareness (SA) for pilots in real time is critical to accelerate training of complex skills and 
@@ -52,7 +54,9 @@ accelerating trainees’ skill acquisition and promoting warfighter readiness.
                     </Card>
                     <Divider/>
                     <Card title="Data Mining Book">
-                        <Image src={book1} width={300} className="img3" alt="img3"/>
+                        <Row justify="center">
+                            <Image src={book1} width={300} className="img3" alt="img3"/>
+                        </Row>
                         <p>
                         This is a unique book which seamlessly weaves data mining technical concepts with business applications. This book lays out step by step approach to build a solid understanding of the data fundamentals and describes the ‘building blocks’ of data mining process. Each data mining process step is supported with examples of business applications and by executional ‘R’ programming code. It has a complete Case Study implementing all the data mining steps with executable ‘R’ code.
                         <br/><br/>This book narrates the subject matter in a classic school textbook style but extends the conversations to more practical applications of the concepts providing an end-to-end 360-degree view of data mining.

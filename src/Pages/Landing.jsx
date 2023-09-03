@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 import "../Styles/Landing.css";
-import logo from "../Resources/profile.JPG";
+import profile from "../Resources/profile.JPG";
+import suit3 from "../Resources/Suit3.jpg";
+import beer from "../Resources/Beer_pic.jpg"
+
+// Company Logos
+import SMU from "../Resources/SMU.png"
+import CAE from "../Resources/CAE.jpg"
+import RAY from "../Resources/Raytheon.png"
+
 import { Navbar } from '../Components/Navbar';
-import { Space, Card, Layout } from 'antd';
+import { Space, Card, Layout, Row, Image } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 
@@ -28,7 +36,11 @@ export const LandingPage = () => {
                         }}
                     >
                         <Card title="About Me" size="large">
-                            <img src={logo} className="logo" alt="logo"/>
+                            <Row justify="space-around" align="middle">
+                                <Image src={profile} width={250}/>
+                                <Image src={beer} width={250}/>
+                                <Image src={suit3} width={250}/>
+                            </Row>
                             
                             <p>I am Yash Sinha, a dedicated and passionate graduate
                             student pursuing my Master of Science in Computer Engineering
@@ -81,7 +93,11 @@ export const LandingPage = () => {
                             </p>
                         </Card>
                         <Card title="Experience" size="small">
-                            <p>Always Winning Copium</p>
+                        <Row justify="space-around" align="middle">
+                                <Image src={SMU} width={250}/>
+                                <Image src={CAE} width={250}/>
+                                <Image src={RAY} width={250}/>
+                            </Row>
                             
                         </Card>
                     </Space>
