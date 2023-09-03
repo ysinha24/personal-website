@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4502666f.css",
+    "main.js": "/static/js/main.d10c6b29.js",
+    "static/js/787.5809834d.chunk.js": "/static/js/787.5809834d.chunk.js",
+    "static/media/robot_gif.gif": "/static/media/robot_gif.d869499e1400a7999c0f.gif",
+    "static/media/profile.JPG": "/static/media/profile.e3f2ca17be2f91951336.JPG",
+    "static/media/robot_img.JPG": "/static/media/robot_img.21d9677db318108bd353.JPG",
+    "static/media/Beer_pic.jpg": "/static/media/Beer_pic.6c1372073510cf0196a9.jpg",
+    "static/media/book1.png": "/static/media/book1.446f4305966b91bfaf34.png",
+    "static/media/Paper.png": "/static/media/Paper.6a3523ae4dd916f6d4c0.png",
+    "static/media/Raytheon.png": "/static/media/Raytheon.0164e8cc5b133e3c9c9c.png",
+    "static/media/Suit3.jpg": "/static/media/Suit3.b1a18caef483dc0e9b45.jpg",
+    "static/media/logo.PNG": "/static/media/logo.2b8727427f63fe2a379f.PNG",
+    "static/media/SMU.png": "/static/media/SMU.fadd5e13836437b6f322.png",
+    "static/media/DoorRecognitionIOT.jpg": "/static/media/DoorRecognitionIOT.172d9d7321addc627904.jpg",
+    "static/media/ESP32-Recognition network.jpg": "/static/media/ESP32-Recognition network.87e25f27da38562527e2.jpg",
+    "static/media/CAE.jpg": "/static/media/CAE.d778f0878ba0abe75506.jpg",
+    "index.html": "/index.html",
+    "main.4502666f.css.map": "/static/css/main.4502666f.css.map",
+    "main.d10c6b29.js.map": "/static/js/main.d10c6b29.js.map",
+    "787.5809834d.chunk.js.map": "/static/js/787.5809834d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4502666f.css",
+    "static/js/main.d10c6b29.js"
+  ]
+}
