@@ -4,6 +4,7 @@ import { ConfigProvider, theme } from 'antd';
 import './App.css';
 import { ThemeProvider, useTheme } from './ThemeContext';
 import { LandingPage } from './Pages/Landing';
+import { AboutPage } from './Pages/About';
 import { Projects } from './Pages/Projects';
 import { Publications } from './Pages/Publication';
 
@@ -14,6 +15,7 @@ function AppInner() {
       <div className={`app-wrapper${isDark ? ' dark-mode' : ''}`}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="about" element={<AboutPage />} />
           <Route path="projects" element={<Projects />} />
           <Route path="publications" element={<Publications />} />
         </Routes>

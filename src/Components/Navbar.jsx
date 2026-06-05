@@ -5,6 +5,7 @@ import {
   HomeOutlined,
   AppstoreOutlined,
   BookOutlined,
+  UserOutlined,
   GithubOutlined,
   LinkedinOutlined,
   MailOutlined,
@@ -23,6 +24,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { to: '/', label: 'Home', icon: <HomeOutlined /> },
+    { to: '/about', label: 'About', icon: <UserOutlined /> },
     { to: '/projects', label: 'Projects', icon: <AppstoreOutlined /> },
     { to: '/publications', label: 'Publications', icon: <BookOutlined /> },
   ];
@@ -37,7 +39,7 @@ export const Navbar = () => {
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand" onClick={() => setMenuOpen(false)}>
           <span className="navbar-brand-name">Yash Sinha</span>
-          <span className="navbar-brand-title">AI/ML Engineer</span>
+          <span className="navbar-brand-title">ML Researcher · Quant Analyst</span>
         </Link>
 
         <div className={`navbar-links${menuOpen ? ' open' : ''}`}>
