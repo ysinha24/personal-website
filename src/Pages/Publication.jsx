@@ -40,6 +40,15 @@ const publications = [
     tags: ['Machine Learning', 'Biometrics', 'Situation Awareness', 'Neural Networks', 'Simulation'],
   },
   {
+    type: 'Book',
+    badge: 'green',
+    title: 'Art of Mining Data: Design Concepts',
+    venue: 'Published Book',
+    year: '',
+    abstract: 'A unique book that weaves data mining technical concepts with business applications, building understanding from data fundamentals through advanced techniques. Each step is supported with real-world business examples and executable R code, culminating in a full end-to-end case study. Structured across six chapters covering data warehousing, data preparation, mining techniques, and visualization — plus a capstone case study with fully executable R code. A holistic guide bridging data mining principles for both data professionals and business audiences.',
+    tags: ['Data Mining', 'R Programming', 'Statistical Modeling', 'Business Analytics', 'Machine Learning'],
+  },
+  {
     type: 'Research',
     badge: 'orange',
     title: 'Quantum-Assisted Circuit Partitioning for Optimized VLSI Testing',
