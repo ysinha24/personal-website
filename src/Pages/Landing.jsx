@@ -1,116 +1,282 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from "react-router-dom";
-import "../Styles/Landing.css";
-import profile from "../Resources/profile.JPG";
-import suit3 from "../Resources/Suit3.jpg";
-import beer from "../Resources/Beer_pic.jpg"
-
-// Company Logos
-import SMU from "../Resources/SMU.png"
-import CAE from "../Resources/CAE.jpg"
-import RAY from "../Resources/Raytheon.png"
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {
+  EnvironmentOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  GithubOutlined,
+  LinkedinOutlined,
+  ArrowRightOutlined,
+  FileTextOutlined,
+} from '@ant-design/icons';
 import { Navbar } from '../Components/Navbar';
-import { Space, Card, Layout, Row, Image } from 'antd';
-const { Header, Content, Footer } = Layout;
+import ProfilePic from '../Resources/ProfilePic.jpg';
+import '../Styles/Landing.css';
 
+const skills = {
+  Languages: { color: 'blue', items: ['Python', 'SQL', 'R', 'C/C++', 'JavaScript', 'Java', 'Bash', 'MATLAB', 'Perl'] },
+  'ML / AI Frameworks': { color: 'purple', items: ['TensorFlow', 'PyTorch', 'Keras', 'Scikit-learn', 'LangChain', 'LangGraph', 'LangSmith', 'Ollama', 'LlamaIndex', 'OpenAI API', 'Anthropic API'] },
+  'Cloud & MLOps': { color: 'orange', items: ['AWS (EC2, S3, Lambda, SageMaker, Glue, RDS, Athena)', 'Databricks', 'Apache Spark', 'MLflow', 'Terraform', 'Docker', 'Apache Airflow', 'CI/CD', 'Git / GitHub', 'Linux'] },
+  'Domains': { color: 'green', items: ['LLMs', 'AI Agents', 'RAG Systems', 'NLP', 'Quantitative Finance', 'Time Series Forecasting', 'Statistical Modeling', 'ETL / ELT Automation', 'Computer Vision', 'Biometrics'] },
+};
+
+const experience = [
+  {
+    role: 'Chief AI/ML Engineer & Chief Data Scientist',
+    company: 'PropertyDealz LLC (Co-Founded)',
+    date: 'June 2025 – Present',
+    project: 'AI-Powered Real Estate Investment Analytics Platform',
+    bullets: [
+      'Designed and deployed advanced statistical models and ensemble ML algorithms for property price forecasting and anomaly detection, integrating tax history, price-per-sq-ft trends, and foreclosure signals.',
+      'Built multi-agent AI workflows using LangGraph, LangChain, OpenAI APIs, and RAG architectures to automate property intelligence gathering and generate structured investment reports.',
+      'Engineered geospatial scoring systems ingesting neighborhood signals from social media and public data APIs, improving investment signal precision.',
+      'Developed scalable ETL/ELT pipelines using PostgreSQL, AWS Lambda, S3, and Glue with event-driven architectures.',
+      'Implemented Infrastructure-as-Code with Terraform; deployed production ML workloads across AWS SageMaker, EC2, Lambda, API Gateway, RDS, and S3.',
+    ],
+  },
+  {
+    role: 'ML Research Engineer (Independent)',
+    company: 'Quantitative Trading Research',
+    date: '2025',
+    project: 'Reinforcement Learning for Stock Trend Prediction via LLM-Augmented News Ingestion',
+    bullets: [
+      'Engineered a full NLP pipeline using LLMs to summarize financial news, extract stock tickers, classify market sentiment, and surface buy/sell/hold signals.',
+      'Applied reinforcement learning (return-driven reward shaping) to optimize trade action policies against historical market data.',
+      'Integrated RAG (Retrieval-Augmented Generation) to ground LLM recommendations in relevant historical context.',
+      'Orchestrated end-to-end daily workflows (ingestion → LLM inference → RL update → storage) using Apache Airflow with CI/CD integration.',
+    ],
+  },
+  {
+    role: 'Lead Research Assistant',
+    company: 'SMU AT&T Center for Virtualization (SRC/Intel Sponsored)',
+    date: 'Aug 2023 – Jul 2025',
+    project: 'ML-Aided Power Obfuscation for Cryptographic Hardware Security',
+    bullets: [
+      'Led a five-person cross-disciplinary team developing latch-based circuit modifications to defend against power side-channel attacks.',
+      'Developed novel mux-latch variants of DES56 encryption; used Cadence Joules to simulate and compare power traces from VCD files.',
+      'Applied ML-based TVLA (Test Vector Leakage Assessment) to statistically quantify circuit vulnerability to power analysis attacks.',
+      'Presented research at SRC TechCon 2024 and 2025; work published in two conference proceedings.',
+    ],
+  },
+  {
+    role: 'Research Assistant',
+    company: 'SMU Darwin Deason Institute for Cyber Security (Raytheon Sponsored)',
+    date: 'Jun 2022 – Jun 2023',
+    project: 'Biometric Authentication via Applied Machine Learning',
+    bullets: [
+      'Built an Android-based two-factor biometric authentication system leveraging on-device ML inference and cloud-backed model retraining.',
+      'Designed end-to-end ML pipelines including feature engineering, model training, hyperparameter tuning, and evaluation using TensorFlow/Keras.',
+      'Implemented on-device model retraining (TFLite) to enroll new users with minimal overhead, enabling continuous learning at the edge.',
+      'Built cloud-native analytics infrastructure using AWS Amplify, Lambda, and S3 for telemetry collection, model versioning, and inference monitoring.',
+    ],
+  },
+];
+
+const certifications = [
+  {
+    name: 'AWS Certified Solutions Architect',
+    issuer: 'Amazon Web Services',
+    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+    logoBg: '#FF9900',
+    logoFg: '#ffffff',
+    logoText: 'AWS',
+  },
+  {
+    name: 'CompTIA Linux+',
+    issuer: 'CompTIA',
+    logoUrl: null,
+    logoBg: '#C8202E',
+    logoFg: '#ffffff',
+    logoText: 'Linux+',
+  },
+  {
+    name: 'CFA Level I Candidate',
+    issuer: 'CFA Institute (Nov 2026)',
+    logoUrl: null,
+    logoBg: '#003087',
+    logoFg: '#ffffff',
+    logoText: 'CFA',
+  },
+];
 
 export const LandingPage = () => {
-    return (
-        <>
-            <Layout className="layout">
-                
-                <Navbar />
-                    
-                <Content
-                    style={{
-                    padding: '0 12rem',
-                    }}
-                >
-                    <div className="site-layout-content">
-                    <Space
-                        direction="vertical"
-                        size="middle"
-                        style={{
-                        display: 'flex',
-                        }}
-                    >
-                        <Card title="About Me" size="large">
-                            <Row justify="space-around" align="middle">
-                                <Image src={profile} width={250}/>
-                                <Image src={beer} width={250}/>
-                                <Image src={suit3} width={250}/>
-                            </Row>
-                            
-                            <p>I am Yash Sinha, a dedicated and passionate graduate
-                            student pursuing my Master of Science in Computer Engineering
-                            at Southern Methodist University. With a solid educational foundation,
-                            including a bachelor's degree in Computer Science and Statistics, I am
-                            driven to excel in the world of technology and innovation.
-                            <br/><br/>As an expert programmer, I am proficient in various languages including
-                            Python, R, JavaScript, and Bash and frameworks such as TensorFlow, Keras, and
-                            ReactJS. My dedication to continuous improvement led me to become certified in DevOps
-                            for Unix systems and AWS cloud services. Through rigorous coursework in Software Development,
-                            Machine Learning, and Statistical Computing, I have honed my skills, emerging as a
-                            seasoned programmer capable of tackling complex problems with innovative solutions.<br/>
-                            </p>
-                        </Card>
-                        <Card title="Skills/Expertise/Certifications" size="medium">
-                            <p>
-                                <b>Technical Skills:</b><br/> 
-                            <i>Languages:	</i>Python, R, C++, Java, SQL(MySQL), JavaScript, HTML, MATLAB, SAS, SPSS<br/>
-                            <i>Environments:</i>	Git, Linux, DevOps, Windows, Anaconda, Docker, AWS
-                            <br/>
-                            <br/>• Strong proficiency in Python, TensorFlow, Numpy, Docker, Linux, UNIX, and R.
-                                <br/>• Exceptional statistical skills, experience of building predictive models using a wide 
-                                variety of tools and techniques (including neural networks, linear or logistic regression, random forest)
-                                <br/>• Have good exposure in LAMP (Linux, Apache, MySQL, and Python) and WAMP Architectures.
-                                <br/>• Deep understanding and implementation experience of Machine Learning models
-                            
-                            </p>
+  return (
+    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
+      <Navbar />
 
-                            <p><b>Expertise:</b><br/>
-                            Machine Learning, Data Mining, Statistical Computing, Time Series Analysis, Algorithms,
-                                    Data Structures, Software Architecture, Databases, Graphical User Interfaces
-                            </p>
+      <div className="page-container">
 
-                            <p>
-                            <b>IT Certifiations:</b><br/>
-                            CompTIA Linux+, AWS Solutions Architect, Microsoft Office                                
-                            </p>
-                        </Card>
-                        <Card title="Education" size="small">
-                            <p>
-                                <b>Southern Methodist University</b><br/>
-                                <i> Major</i> <br/>
-                                Bachelor of Science in Computer Science<br/>
-                                <t/>Bachelor of Science in Statistical Science  <br/><br/>
-                                <i>Minor</i> <br/>Mathematics <br/><br/>
+        {/* ── HERO ── */}
+        <section className="hero">
+          <div className="hero-text">
+            <p className="hero-greeting">👋 Hello, I'm</p>
+            <h1 className="hero-name">Yash Sinha</h1>
+            <p className="hero-title">AI/ML Engineer &amp; Data Scientist</p>
+            <p className="hero-location">
+              <EnvironmentOutlined /> Dallas, TX
+            </p>
+            <p className="hero-summary">
+              AI/ML Engineer and Data Scientist with 6+ years of applied research experience building and
+              deploying production-grade machine learning systems. Proven expertise in end-to-end ML pipelines —
+              from data ingestion and feature engineering to model training, evaluation, and cloud deployment.
+              Hands-on track record across LLM-driven agents, computer vision/biometrics, quantitative finance,
+              time-series forecasting, and NLP. Inventor of patent-pending AI/ML methodologies.
+            </p>
+            <div className="hero-actions">
+              <Link to="/projects" className="btn-primary">
+                View Projects <ArrowRightOutlined />
+              </Link>
+              <Link to="/publications" className="btn-outline">
+                <FileTextOutlined /> Publications
+              </Link>
+            </div>
+          </div>
+          <div className="hero-photo-wrapper">
+            <img src={ProfilePic} alt="Yash Sinha" className="hero-photo" />
+          </div>
+        </section>
 
-                                <i>Pursuing</i><br/>
-                                M.S. Computer Engineering
+        {/* ── SKILLS ── */}
+        <section className="section">
+          <h2 className="section-title">Skills &amp; Expertise</h2>
+          <div className="card">
+            <div className="skills-grid">
+              {Object.entries(skills).map(([group, { color, items }]) => (
+                <div key={group}>
+                  <div className="skill-group-label">{group}</div>
+                  <div className="skill-group">
+                    {items.map(s => (
+                      <span key={s} className={`skill-tag ${color}`}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                            </p>
-                        </Card>
-                        <Card title="Experience" size="small">
-                        <Row justify="space-around" align="middle">
-                                <Image src={SMU} width={250}/>
-                                <Image src={CAE} width={250}/>
-                                <Image src={RAY} width={250}/>
-                            </Row>
-                            
-                        </Card>
-                    </Space>
-                    </div>
-                </Content>
-                <Footer
-                    style={{
-                    textAlign: 'center',
-                    }}
-                >
-                    Yash Sinha ©2023
-                </Footer>
-            </Layout>
-        </>
-    );
+        {/* ── CERTIFICATIONS ── */}
+        <section className="section">
+          <h2 className="section-title">Certifications</h2>
+          <div className="certs-grid">
+            {certifications.map(cert => (
+              <div key={cert.name} className="cert-card">
+                {cert.logoUrl ? (
+                  <img
+                    src={cert.logoUrl}
+                    alt={cert.issuer}
+                    className="cert-logo"
+                    style={{ background: cert.logoBg, padding: '8px' }}
+                  />
+                ) : (
+                  <div
+                    className="cert-logo-badge"
+                    style={{ background: cert.logoBg, color: cert.logoFg, fontSize: cert.logoText.length > 4 ? '0.9rem' : '1.5rem' }}
+                  >
+                    {cert.logoText}
+                  </div>
+                )}
+                <div className="cert-info">
+                  <div className="cert-name">{cert.name}</div>
+                  <div className="cert-issuer">{cert.issuer}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── EXPERIENCE ── */}
+        <section className="section">
+          <h2 className="section-title">Experience</h2>
+          <div className="experience-list">
+            {experience.map(exp => (
+              <div key={exp.role + exp.company} className="exp-card">
+                <div className="exp-header">
+                  <div>
+                    <div className="exp-role">{exp.role}</div>
+                    <div className="exp-company">{exp.company}</div>
+                  </div>
+                  <span className="exp-date">{exp.date}</span>
+                </div>
+                {exp.project && <div className="exp-project">{exp.project}</div>}
+                <ul className="exp-bullets">
+                  {exp.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── EDUCATION ── */}
+        <section className="section">
+          <h2 className="section-title">Education</h2>
+          <div className="edu-card">
+            <div className="edu-school">Southern Methodist University</div>
+            <div className="edu-location"><EnvironmentOutlined /> Dallas, TX</div>
+            <div className="edu-degrees">
+              <div className="edu-degree">
+                <div>
+                  <div className="edu-degree-name">M.S. Computer Engineering</div>
+                </div>
+                <span className="edu-degree-year">Spring 2025</span>
+              </div>
+              <div className="edu-degree">
+                <div>
+                  <div className="edu-degree-name">B.S. Computer Science</div>
+                  <div className="edu-degree-detail">Specialization: Artificial Intelligence &amp; Machine Learning</div>
+                </div>
+                <span className="edu-degree-year">Spring 2023</span>
+              </div>
+              <div className="edu-degree">
+                <div>
+                  <div className="edu-degree-name">B.S. Statistical Science</div>
+                </div>
+                <span className="edu-degree-year">Spring 2023</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CONTACT ── */}
+        <section className="section">
+          <h2 className="section-title">Get In Touch</h2>
+          <div className="contact-grid">
+            <a href="mailto:ysinha@smu.edu" className="contact-item">
+              <MailOutlined className="contact-icon" />
+              <div>
+                <div className="contact-label">Email</div>
+                <div className="contact-value">ysinha@smu.edu</div>
+              </div>
+            </a>
+            <a href="tel:8287299039" className="contact-item">
+              <PhoneOutlined className="contact-icon" />
+              <div>
+                <div className="contact-label">Phone</div>
+                <div className="contact-value">828-729-9039</div>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/ysinha24/" target="_blank" rel="noopener noreferrer" className="contact-item">
+              <LinkedinOutlined className="contact-icon" />
+              <div>
+                <div className="contact-label">LinkedIn</div>
+                <div className="contact-value">ysinha24</div>
+              </div>
+            </a>
+            <a href="https://github.com/ysinha24" target="_blank" rel="noopener noreferrer" className="contact-item">
+              <GithubOutlined className="contact-icon" />
+              <div>
+                <div className="contact-label">GitHub</div>
+                <div className="contact-value">ysinha24</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <footer className="footer">
+        Yash Sinha © 2025 · Dallas, TX · AI/ML Engineer &amp; Data Scientist
+      </footer>
+    </div>
+  );
 };
