@@ -54,7 +54,7 @@ const certifications = [
 const affiliations = [
   {
     name: 'Southern Methodist University',
-    role: 'M.S. Computer Engineering',
+    role: 'Research & Graduate Studies',
     img: SMU,
     bg: '#ffffff',
   },
@@ -124,6 +124,36 @@ export const LandingPage = () => {
           </div>
         </section>
 
+        {/* ── CERTIFICATIONS ── */}
+        <section className="section">
+          <h2 className="section-title">Certifications</h2>
+          <div className="certs-grid">
+            {certifications.map(cert => (
+              <div key={cert.name} className="cert-card">
+                {cert.logoUrl ? (
+                  <img
+                    src={cert.logoUrl}
+                    alt={cert.issuer}
+                    className="cert-logo"
+                    style={{ background: cert.logoBg, padding: '8px' }}
+                  />
+                ) : (
+                  <div
+                    className="cert-logo-badge"
+                    style={{ background: cert.logoBg, color: cert.logoFg, fontSize: cert.logoText.length > 4 ? '0.9rem' : '1.5rem' }}
+                  >
+                    {cert.logoText}
+                  </div>
+                )}
+                <div className="cert-info">
+                  <div className="cert-name">{cert.name}</div>
+                  <div className="cert-issuer">{cert.issuer}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ── AFFILIATIONS ── */}
         <section className="section">
           <h2 className="section-title">Affiliated With</h2>
@@ -162,36 +192,6 @@ export const LandingPage = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* ── CERTIFICATIONS ── */}
-        <section className="section">
-          <h2 className="section-title">Certifications</h2>
-          <div className="certs-grid">
-            {certifications.map(cert => (
-              <div key={cert.name} className="cert-card">
-                {cert.logoUrl ? (
-                  <img
-                    src={cert.logoUrl}
-                    alt={cert.issuer}
-                    className="cert-logo"
-                    style={{ background: cert.logoBg, padding: '8px' }}
-                  />
-                ) : (
-                  <div
-                    className="cert-logo-badge"
-                    style={{ background: cert.logoBg, color: cert.logoFg, fontSize: cert.logoText.length > 4 ? '0.9rem' : '1.5rem' }}
-                  >
-                    {cert.logoText}
-                  </div>
-                )}
-                <div className="cert-info">
-                  <div className="cert-name">{cert.name}</div>
-                  <div className="cert-issuer">{cert.issuer}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
