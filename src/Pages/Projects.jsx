@@ -140,7 +140,7 @@ export const Projects = () => {
         </div>
       </div>
       <footer className="footer">
-        Yash Sinha © 2025 · Dallas, TX · AI/ML Engineer &amp; Data Scientist
+        Yash Sinha © 2025 · Houston / Dallas, TX · AI/ML Engineer &amp; Data Scientist
       </footer>
     </div>
   );

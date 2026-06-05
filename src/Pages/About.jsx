@@ -122,7 +122,7 @@ export const AboutPage = () => {
           <h2 className="section-title">Education</h2>
           <div className="edu-card">
             <div className="edu-school">Southern Methodist University</div>
-            <div className="edu-location"><EnvironmentOutlined /> Dallas, TX</div>
+            <div className="edu-location"><EnvironmentOutlined /> Houston / Dallas, TX</div>
             <div className="edu-degrees">
               <div className="edu-degree">
                 <div>
@@ -149,7 +149,7 @@ export const AboutPage = () => {
 
       </div>
       <footer className="footer">
-        Yash Sinha © 2025 · Dallas, TX · ML Research Scientist &amp; Quantitative Analyst
+        Yash Sinha © 2025 · Houston / Dallas, TX · ML Research Scientist &amp; Quantitative Analyst
       </footer>
     </div>
   );

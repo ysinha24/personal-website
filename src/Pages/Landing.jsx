@@ -98,7 +98,7 @@ export const LandingPage = () => {
               <span className="hero-title-chip tertiary">Data Scientist</span>
             </div>
             <p className="hero-location">
-              <EnvironmentOutlined /> Dallas, TX
+              <EnvironmentOutlined /> Houston / Dallas, TX
             </p>
             <p className="hero-summary">
               ML Research Scientist and Quantitative Analyst with 6+ years of applied experience at the
@@ -233,7 +233,7 @@ export const LandingPage = () => {
       </div>
 
       <footer className="footer">
-        Yash Sinha © 2025 · Dallas, TX · ML Research Scientist &amp; Quantitative Analyst
+        Yash Sinha © 2025 · Houston / Dallas, TX · ML Research Scientist &amp; Quantitative Analyst
       </footer>
     </div>
   );
