@@ -90,7 +90,7 @@ export const LandingPage = () => {
         {/* ── HERO ── */}
         <section className="hero">
           <div className="hero-text">
-            <p className="hero-greeting">👋 Hello, I'm</p>
+            <p className="hero-greeting">Hello, I'm</p>
             <h1 className="hero-name">Yash Sinha</h1>
             <div className="hero-title-group">
               <span className="hero-title-chip primary">ML Research Scientist</span>
