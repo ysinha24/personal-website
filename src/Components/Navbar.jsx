@@ -9,8 +9,6 @@ import {
   GithubOutlined,
   LinkedinOutlined,
   MailOutlined,
-  BulbOutlined,
-  StarOutlined,
   MenuOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
@@ -73,14 +71,14 @@ export const Navbar = () => {
           </div>
 
           <div className="theme-toggle">
-            <BulbOutlined style={{ color: isDark ? '#64748b' : '#f59e0b' }} />
+            <span style={{ fontSize: '1rem', opacity: isDark ? 0.35 : 1 }}>☀️</span>
             <Switch
               checked={isDark}
               onChange={toggleTheme}
               size="small"
               style={{ margin: '0 6px' }}
             />
-            <StarOutlined style={{ color: isDark ? '#a78bfa' : '#64748b' }} />
+            <span style={{ fontSize: '1rem', opacity: isDark ? 1 : 0.35 }}>🌙</span>
           </div>
         </div>
 
