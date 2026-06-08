@@ -4,6 +4,7 @@ import IOT from '../Resources/DoorRecognitionIOT.jpg';
 import arch from '../Resources/ESP32-Recognition network.jpg';
 import robot1 from '../Resources/robot_img.JPG';
 import robot2 from '../Resources/robot_gif.gif';
+import propertyDealzImg from '../Resources/propertydealz-preview.png';
 import '../Styles/Projects.css';
 
 const projects = [
@@ -21,7 +22,9 @@ const projects = [
       'Deployed production ML workloads via Terraform across AWS SageMaker, EC2, Lambda, API Gateway, RDS, and S3.',
     ],
     tags: ['LangGraph', 'LangChain', 'OpenAI API', 'RAG', 'AWS SageMaker', 'Terraform', 'PostgreSQL', 'Python'],
-    images: [],
+    images: [propertyDealzImg],
+    link: 'https://www.propertydealz.ai',
+    linkLabel: 'Visit propertydealz.ai',
   },
   {
     title: 'Reinforcement Learning for Stock Trend Prediction via LLM-Augmented News Ingestion',
@@ -128,6 +131,11 @@ export const Projects = () => {
                 </div>
               )}
 
+              {project.link && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                  🔗 {project.linkLabel || project.link}
+                </a>
+              )}
               <p className="project-desc">{project.desc}</p>
               <ul className="project-bullets">
                 {project.bullets.map((b, i) => <li key={i}>{b}</li>)}
